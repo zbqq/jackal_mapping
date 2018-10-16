@@ -39,6 +39,8 @@ Run the launch file:
 roslaunch tm_mapping online.launch
 ```
 
+Note: if you are using other nodes that publishes tf transform for base_link, you may want to stop it. For example, run ```rosnode kill /ekf_localization``` to kill robot_localization node.
+
 ## Cite *tm_mapping*
 
 Thank you for citing our paper if you use any of this code: 
