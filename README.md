@@ -12,7 +12,9 @@
 You can use the following commands to download and compile the package.
 
 ```
-cd ~/catkin_ws
+cd ~/catkin_ws/src
+git clong https://github.com/TixiaoShan/jackal_mapping.git
+cd ..
 catkin_make -j1
 ```
 When you compile the code for the first time, you need to add "-j1" behind "catkin_make" for generating some message types. "-j1" is not needed for future compiling.
