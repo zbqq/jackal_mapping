@@ -1,0 +1,21 @@
+<launch>
+    
+    <param name="/use_sim_time" value="true" />
+
+    <node pkg="tf" type="static_transform_publisher" name="camera_init_to_map" args="0 0 0 1.570795 0 1.570795 /map /camera_init 10" />
+    <node pkg="tf" type="static_transform_publisher" name="base_link_to_camera" args="0 0 0 -1.570795 -1.570795 0 /camera /base_link 10" />
+  
+    <node pkg="lego_loam" type="imageProjection"    name="imageProjection"    output="screen"/>
+    <node pkg="lego_loam" type="featureAssociation" name="featureAssociation" output="screen"/>
+    <node pkg="lego_loam" type="mapOptmization"     name="mapOptmization"     output="screen"/>
+    <node pkg="lego_loam" type="transformFusion"    name="transformFusion"    output="screen"/>
+
+    <node pkg="rviz" type="rviz" name="rviz" output="log" args="-d $(find tm_mapping)/launch/include/tm_mapping.rviz" />
+    
+    <node pkg="tm_mapping" type="tm_filter"  name="tm_filter"  output="screen"/>
+    <node pkg="tm_mapping" type="tm_map"     name="tm_map"     output="screen"/>
+    <node pkg="tm_mapping" type="tm_prm"     name="tm_prm"     output="screen"/>
+
+    <include file="$(find tm_mapping)/launch/include/move_base.launch" />
+
+</launch>
